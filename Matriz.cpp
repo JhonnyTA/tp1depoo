@@ -40,12 +40,12 @@ Matriz::~Matriz(){
     delete [] this->vetor;
 }
 
-double& Matriz::operator()(unsigned int x, unsigned int y){
+double &Matriz::operator()(unsigned int x, unsigned int y){
     if ((x > this->getRows())&&(y > this->getCols())) throw "Índice fora da Matriz.";
     else return vetor[x][y];
 }
 
-Matriz& Matriz::operator=(const Matriz &A){
+Matriz &Matriz::operator=(const Matriz &A){
     if (this == &A) return *this;
     if ((this->rows != A.rows)||(this->cols != A.cols)){
         for (int i = 0; i < rows; i++) delete [] this->vetor[i];
@@ -61,7 +61,7 @@ Matriz& Matriz::operator=(const Matriz &A){
     }
 }
 
-Matriz& Matriz::operator+=(const Matriz &A){
+Matriz &Matriz::operator+=(const Matriz &A){
     if ((A.cols != this->cols)||(A.rows != this->rows)){
         cerr << "Matrizes de ordem diferentes. Não foi possível realizar a soma." << endl;
     }
@@ -75,7 +75,7 @@ Matriz& Matriz::operator+=(const Matriz &A){
     return *this;
 }
 
-Matriz& Matriz::operator-=(const Matriz &A){
+Matriz &Matriz::operator-=(const Matriz &A){
     if ((A.cols != this->cols)||(A.rows != this->rows)){
         cerr << "Matrizes de ordem diferentes. Não foi possível realizar a subtração." << endl;
     }
@@ -89,7 +89,7 @@ Matriz& Matriz::operator-=(const Matriz &A){
     return *this;
 }
 
-Matriz& Matriz::operator*=(const Matriz &A){
+Matriz &Matriz::operator*=(const Matriz &A){
     if (this->cols != A.rows){ 
         cerr << "Ordem incompatível. Não foi possível realizar a multiplicação." << endl;
         return *this;
@@ -145,7 +145,7 @@ void Matriz::unit(){
     }
 }
 
-ostream & operator<<(ostream & os, const Matriz &A){
+ostream &operator<<(ostream & os, const Matriz &A){
     for (int i = 0; i < A.rows; i++){
         os << A.vetor[i][0];
         for(int j = 1; j < A.cols; j++){
